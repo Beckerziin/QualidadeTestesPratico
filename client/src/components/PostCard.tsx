@@ -15,6 +15,7 @@ export default function PostCard({
   onLike,
 }: PostCardProps) {
   const [liked, setLiked] = useState(post.liked);
+  const [likesCount, setLikesCount] = useState(post.reactions?.likes ?? 0);
   const [isLoading, setIsLoading] = useState(false);
 
   async function handleLike() {
@@ -25,12 +26,16 @@ export default function PostCard({
 
     setIsLoading(true);
     const previousLiked = liked;
+    const previousLikesCount = likesCount;
+
     setLiked(!liked);
+    setLikesCount(liked ? likesCount - 1 : likesCount + 1);
 
     try {
       await onLike(post.id);
     } catch {
       setLiked(previousLiked);
+      setLikesCount(previousLikesCount);
       alert("Erro ao curtir post. Tente novamente.");
     } finally {
       setIsLoading(false);
@@ -88,7 +93,7 @@ export default function PostCard({
           fontSize: "0.95rem",
         }}
       >
-        <span data-testid="likes-count">👍 {post.reactions?.likes ?? 0}</span>
+        <span data-testid="likes-count">👍 {likesCount}</span>
         <span data-testid="dislikes-count">👎 {post.reactions?.dislikes ?? 0}</span>
       </div>
 
