@@ -65,6 +65,7 @@
 	</dependencies>
 
 	<build>
+		<testSourceDirectory>${project.basedir}/src/test/api</testSourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
