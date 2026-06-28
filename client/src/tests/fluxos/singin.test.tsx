@@ -82,7 +82,7 @@ describe("Teste de Integração - Página SignIn", () => {
     const submitButton = getSubmitButton();
 
     fireEvent.change(emailInput, { target: { value: "test@email.com" } });
-    fireEvent.change(passwordInput, { target: { value: "password1423" } });
+    fireEvent.change(passwordInput, { target: { value: "password123" } });
     fireEvent.click(submitButton);
 
     await waitFor(() => {

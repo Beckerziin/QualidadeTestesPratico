@@ -8,7 +8,7 @@ describe("Funções de validação de senha", () => {
   })
 
   test('Valida se uma senha é valida', ()=>{
-    const validacaoSenhaValida = isPasswordValid('Senha1234!');
+    const validacaoSenhaValida = isPasswordValid('Senha1234*');
     expect(validacaoSenhaValida).toBe(true)
   })
 
